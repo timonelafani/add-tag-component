@@ -5,8 +5,10 @@
     padding: 8px 14px;
     display: inline-block;
     font-weight: 500;
+    margin: 5px;
 }
 
 .tag span {
-    color: #B3B2B3
+    color: #B3B2B3;
+    cursor: pointer;
 }

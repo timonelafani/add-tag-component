@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import Tag from '../Tag/Tag';
 import './Input.css';
 
-const Input = () => {
+const Input = ({ tagDropdownData, selectTag }) => {
     const [value, setValue] = useState("+  Add tag")
     const [showTagList, setShowTagList] = useState(false)
 
@@ -15,26 +14,28 @@ const Input = () => {
         setShowTagList(!showTagList)
     }
 
-    const onTagListItemClickHandler = () => {
+    const onTagListItemClickHandler = (selected) => {
         setShowTagList(!showTagList)
         setValue("+  Add tag")
+        selectTag(selected)
     }
 
     return (
         <div className='input-container'>
             <input
-            type="text"
-            value={value}
-            className='input'
-            onChange={onChangeHandler}
-            onClick={onClickHandler}
-        />
-       {showTagList && <div className='items-list'>
-            <ul>
-                <li onClick={onTagListItemClickHandler}>item 1</li>
-                <li onClick={onTagListItemClickHandler}>item 2</li>
-            </ul>   
-        </div>}
+                type="text"
+                value={value}
+                className='input'
+                onChange={onChangeHandler}
+                onClick={onClickHandler}
+            />
+            {showTagList && <div className='items-list'>
+                <ul>
+                    {tagDropdownData.map(tag => (
+                        <li key={tag} onClick={() => onTagListItemClickHandler(tag)}>{tag}</li>
+                    ))}
+                </ul>
+            </div>}
         </div>
     )
 }

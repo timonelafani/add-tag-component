@@ -17,10 +17,19 @@
 
 .items-list {
     position: absolute;
+    top: 70px;
+    left: 10px;
+    border-radius: 15px;
     background-color: white;
     padding: 10px 30px;
 }
 
+.items-list ul {
+    padding: 0;
+    margin: 0;
+}
+
 .items-list ul li {
-    cursor: pointer
+    cursor: pointer;
+    list-style-type: none;
 }
