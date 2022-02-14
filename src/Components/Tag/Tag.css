@@ -1,0 +1,12 @@
+.tag {
+    background-color: #F5F6F9;
+    color: #232224;
+    border-radius: 12px;
+    padding: 8px 14px;
+    display: inline-block;
+    font-weight: 500;
+}
+
+.tag span {
+    color: #B3B2B3
+}

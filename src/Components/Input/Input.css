@@ -1,0 +1,26 @@
+.input-container {
+    position: relative;
+    display: inline-block;
+}
+
+.input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border-radius: 15px;
+    width: auto;
+    height: 30px;
+    padding: 10px 30px;
+    font-size: large;
+    color: #B3B2B3;
+}
+
+.items-list {
+    position: absolute;
+    background-color: white;
+    padding: 10px 30px;
+}
+
+.items-list ul li {
+    cursor: pointer
+}
