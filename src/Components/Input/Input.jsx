@@ -13,6 +13,11 @@ const Input = ({ tagDropdownData, selectTag, searchTag }) => {
         setValue(""); setShowTagList(true)
     }
 
+    /**
+     * Handels OnClick event on a single tag.
+     * @constructor
+     * @param {string} selected - The selected tag.
+     */
     const onTagListItemClickHandler = (selected) => {
         setShowTagList(!showTagList)
         setValue("+  Add tag")
