@@ -1,8 +1,6 @@
-# Countries list website
+# Add tags component
 
 DEMO 👉 https://add-tag-component.vercel.app/
-
-... or visit [Vercel](https://add-tag-component.vercel.app/)
 
 ## Prerequisites
 
