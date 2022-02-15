@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './Input.css';
 
-const Input = ({ tagDropdownData, selectTag }) => {
+const Input = ({ tagDropdownData, selectTag, searchTag }) => {
     const [value, setValue] = useState("+  Add tag")
     const [showTagList, setShowTagList] = useState(false)
 
@@ -10,8 +10,7 @@ const Input = ({ tagDropdownData, selectTag }) => {
     }
 
     const onClickHandler = () => {
-        setValue("")
-        setShowTagList(!showTagList)
+        setValue(""); setShowTagList(true)
     }
 
     const onTagListItemClickHandler = (selected) => {
@@ -22,13 +21,16 @@ const Input = ({ tagDropdownData, selectTag }) => {
 
     return (
         <div className='input-container'>
-            <input
+            {tagDropdownData.length > 0 && <input
                 type="text"
                 value={value}
                 className='input'
-                onChange={onChangeHandler}
+                onChange={(e) => {
+                    searchTag(e.target.value);
+                    onChangeHandler(e)
+                }}
                 onClick={onClickHandler}
-            />
+            />}
             {showTagList && <div className='items-list'>
                 <ul>
                     {tagDropdownData.map(tag => (
