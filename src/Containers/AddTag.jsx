@@ -9,6 +9,7 @@ const AddTag = () => {
   const [tagsDropdownData, settagsDropdownData] = useState(data.people.map(el => el.name))
   const [isSearch, setIsSearch] = useState(false);
   const [tagsAfterSearch, setTagsAfterSearch] = useState(tagsDropdownData);
+  const [searchedValue, setSearchedValue] = useState("");
 
   /**
    * Handels selecting a single tag and removing it from the dropdown.
@@ -21,6 +22,7 @@ const AddTag = () => {
     tagsDropdownData.splice(index, 1);
     settagsDropdownData(tagsDropdownData)
     setIsSearch(false);
+    setSearchedValue("")
   }
 
   /**
@@ -31,6 +33,7 @@ const AddTag = () => {
   const removeTagHandler = (selected) => {
     setSelectedTags(selectedTags.filter(item => item !== selected));
     settagsDropdownData([...tagsDropdownData, selected])
+    setSearchedValue("")
   }
 
   /**
@@ -41,19 +44,20 @@ const AddTag = () => {
   const searchTagHandler = (value) => {
     setIsSearch(true);
     const remainingTags = tagsDropdownData;
-
+    setSearchedValue(value)
     if (value.length > 2) {
-      setTagsAfterSearch(remainingTags.filter(data => data.includes(value)))
+      setTagsAfterSearch(remainingTags.filter(data => { const toLowerCase = data.toLowerCase(); return toLowerCase.includes(value.toLowerCase()) }))
     }
     else {
-      setTagsAfterSearch(tagsDropdownData)
+      setTagsAfterSearch(tagsDropdownData);
+      setSearchedValue("")
     }
   }
 
   return (
     <div className="add-tag-container">
       <Tag tags={selectedTags} removeTag={removeTagHandler} />
-      <Input tagDropdownData={isSearch ? tagsAfterSearch : tagsDropdownData} selectTag={selectTagHandler} searchTag={searchTagHandler} />
+      <Input tagDropdownData={isSearch ? tagsAfterSearch : tagsDropdownData} selectTag={selectTagHandler} searchTag={searchTagHandler} searchedValue={searchedValue} />
     </div>
   )
 };
