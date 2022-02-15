@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import './Tag.css';
 
 const Tag = ({ tags, removeTag }) => (

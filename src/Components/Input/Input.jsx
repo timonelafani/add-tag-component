@@ -35,7 +35,7 @@ const Input = ({ tagDropdownData, selectTag, searchTag, searchedValue }) => {
             }
             const indexOfText = data.indexOf(searchedValue);
             if (indexOfText === -1) {
-                <li key={data} onClick={() => onTagListItemClickHandler(data)}>{data}</li>
+                return <li key={data} onClick={() => onTagListItemClickHandler(data)}>{data}</li>
             } else {
                 const endIndexOfText = indexOfText + searchedValue.length;
                 return (
